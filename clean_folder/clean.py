@@ -44,7 +44,12 @@ def handle_folder(folder: Path):
 
 
 def main():
-    folder_for_scan = Path(sys.argv[1])
+    try:
+        folder_for_scan = Path(sys.argv[1])
+    except Exception:
+        print('You enter wrong path to folder')
+        sys.exit(1)
+
     print(f'Start in folder {folder_for_scan.resolve()}')
     parser.scan(folder_for_scan)
     for file in parser.IMAGES:
